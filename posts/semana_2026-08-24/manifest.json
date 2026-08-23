@@ -1,0 +1,170 @@
+[
+  {
+    "date": "2026-08-24",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Match Odds (1X2)",
+    "folder": "2026-08-24_manha-match-odds-1x2",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-24",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Forma recente (últimos 5 a 10 jogos)",
+    "folder": "2026-08-24_tarde-forma-recente-ultimos-5-a-10",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-24",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "FIFA virou EA Sports FC em 2023",
+    "folder": "2026-08-24_noite-fifa-virou-ea-sports-fc-em-2",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-25",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Under/Over de gols",
+    "folder": "2026-08-25_manha-under-over-de-gols",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-25",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Posse de bola",
+    "folder": "2026-08-25_tarde-posse-de-bola",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-25",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "eFootball é o antigo PES",
+    "folder": "2026-08-25_noite-efootball-e-o-antigo-pes",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-26",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Ambas Marcam (BTTS): explicação do mercado onde os dois times precisam balançar as redes, quando costuma ser mais relevante analisar e como difere de Over de gols.",
+    "folder": "2026-08-26_manha-ambas-marcam-btts-explicacao",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-26",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Finalizações no gol vs finalizações certas: por que o volume de chutes importa menos que a qualidade/precisão das finalizações na hora de ler um jogo.",
+    "folder": "2026-08-26_tarde-finalizacoes-no-gol-vs-final",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-26",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Diferença entre eFootball e EA Sports FC como produtos hoje: modelo de negócio, licenças e propostas de jogo de cada um.",
+    "folder": "2026-08-26_noite-diferenca-entre-efootball-e",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-27",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Dupla Chance (1X, 12, X2)",
+    "folder": "2026-08-27_manha-dupla-chance-1x-12-x2",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-27",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Escanteios como indicador de pressão ofensiva",
+    "folder": "2026-08-27_tarde-escanteios-como-indicador-de",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-27",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Configurações de partida (tempo, dificuldade, câmera) afetam o resultado",
+    "folder": "2026-08-27_noite-configuracoes-de-partida-tem",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-28",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Draw No Bet: o mercado onde o empate anula a aposta (dinheiro de volta), diferença prática em relação ao Match Odds e quando costuma ser usado.",
+    "folder": "2026-08-28_manha-draw-no-bet-o-mercado-onde-o",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-28",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Confronto direto entre players: o que observar no histórico de partidas entre dois competidores específicos e por que estilo de jogo pesa tanto quanto o resultado passado.",
+    "folder": "2026-08-28_tarde-confronto-direto-entre-playe",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-28",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Rating alto do elenco não garante vitória: por que a execução do player em campo pesa mais do que a força nominal do time escolhido.",
+    "folder": "2026-08-28_noite-rating-alto-do-elenco-nao-ga",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-29",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Handicap Asiático",
+    "folder": "2026-08-29_manha-handicap-asiatico",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-29",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Cansaço e volume de partidas no dia",
+    "folder": "2026-08-29_tarde-cansaco-e-volume-de-partidas",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-29",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Meta de formações muda a cada versão",
+    "folder": "2026-08-29_noite-meta-de-formacoes-muda-a-cad",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-30",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Total de Escanteios ou Cartões: como funcionam as linhas de over/under para esses mercados alternativos e em que contexto costumam ser observados.",
+    "folder": "2026-08-30_manha-total-de-escanteios-ou-carto",
+    "n_images": 8
+  },
+  {
+    "date": "2026-08-30",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Odds de abertura vs odds ao vivo: o que a movimentação das odds entre o início e o decorrer da partida pode (e não pode) indicar.",
+    "folder": "2026-08-30_tarde-odds-de-abertura-vs-odds-ao",
+    "n_images": 1
+  },
+  {
+    "date": "2026-08-30",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Cena competitiva de eFootball/EA FC cresceu nos últimos anos: como torneios e visibilidade do competitivo evoluíram, sem citar valores de premiação.",
+    "folder": "2026-08-30_noite-cena-competitiva-de-efootbal",
+    "n_images": 1
+  }
+]
