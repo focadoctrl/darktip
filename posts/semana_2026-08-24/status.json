@@ -1,0 +1,212 @@
+[
+  {
+    "folder": "2026-08-24_manha-match-odds-1x2",
+    "date": "2026-08-24",
+    "slot": "manha",
+    "topic": "Match Odds (1X2)",
+    "scheduled_at": "2026-08-24T09:00:00-03:00",
+    "status": "posted",
+    "media_id": "17974314479919256",
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-24_tarde-forma-recente-ultimos-5-a-10",
+    "date": "2026-08-24",
+    "slot": "tarde",
+    "topic": "Forma recente (últimos 5 a 10 jogos)",
+    "scheduled_at": "2026-08-24T12:30:00-03:00",
+    "status": "posted",
+    "media_id": "17915530434442596",
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-24_noite-fifa-virou-ea-sports-fc-em-2",
+    "date": "2026-08-24",
+    "slot": "noite",
+    "topic": "FIFA virou EA Sports FC em 2023",
+    "scheduled_at": "2026-08-24T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-25_manha-under-over-de-gols",
+    "date": "2026-08-25",
+    "slot": "manha",
+    "topic": "Under/Over de gols",
+    "scheduled_at": "2026-08-25T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-25_tarde-posse-de-bola",
+    "date": "2026-08-25",
+    "slot": "tarde",
+    "topic": "Posse de bola",
+    "scheduled_at": "2026-08-25T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-25_noite-efootball-e-o-antigo-pes",
+    "date": "2026-08-25",
+    "slot": "noite",
+    "topic": "eFootball é o antigo PES",
+    "scheduled_at": "2026-08-25T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-26_manha-ambas-marcam-btts-explicacao",
+    "date": "2026-08-26",
+    "slot": "manha",
+    "topic": "Ambas Marcam (BTTS): explicação do mercado onde os dois times precisam balançar as redes, quando costuma ser mais relevante analisar e como difere de Over de gols.",
+    "scheduled_at": "2026-08-26T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-26_tarde-finalizacoes-no-gol-vs-final",
+    "date": "2026-08-26",
+    "slot": "tarde",
+    "topic": "Finalizações no gol vs finalizações certas: por que o volume de chutes importa menos que a qualidade/precisão das finalizações na hora de ler um jogo.",
+    "scheduled_at": "2026-08-26T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-26_noite-diferenca-entre-efootball-e",
+    "date": "2026-08-26",
+    "slot": "noite",
+    "topic": "Diferença entre eFootball e EA Sports FC como produtos hoje: modelo de negócio, licenças e propostas de jogo de cada um.",
+    "scheduled_at": "2026-08-26T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-27_manha-dupla-chance-1x-12-x2",
+    "date": "2026-08-27",
+    "slot": "manha",
+    "topic": "Dupla Chance (1X, 12, X2)",
+    "scheduled_at": "2026-08-27T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-27_tarde-escanteios-como-indicador-de",
+    "date": "2026-08-27",
+    "slot": "tarde",
+    "topic": "Escanteios como indicador de pressão ofensiva",
+    "scheduled_at": "2026-08-27T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-27_noite-configuracoes-de-partida-tem",
+    "date": "2026-08-27",
+    "slot": "noite",
+    "topic": "Configurações de partida (tempo, dificuldade, câmera) afetam o resultado",
+    "scheduled_at": "2026-08-27T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-28_manha-draw-no-bet-o-mercado-onde-o",
+    "date": "2026-08-28",
+    "slot": "manha",
+    "topic": "Draw No Bet: o mercado onde o empate anula a aposta (dinheiro de volta), diferença prática em relação ao Match Odds e quando costuma ser usado.",
+    "scheduled_at": "2026-08-28T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-28_tarde-confronto-direto-entre-playe",
+    "date": "2026-08-28",
+    "slot": "tarde",
+    "topic": "Confronto direto entre players: o que observar no histórico de partidas entre dois competidores específicos e por que estilo de jogo pesa tanto quanto o resultado passado.",
+    "scheduled_at": "2026-08-28T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-28_noite-rating-alto-do-elenco-nao-ga",
+    "date": "2026-08-28",
+    "slot": "noite",
+    "topic": "Rating alto do elenco não garante vitória: por que a execução do player em campo pesa mais do que a força nominal do time escolhido.",
+    "scheduled_at": "2026-08-28T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-29_manha-handicap-asiatico",
+    "date": "2026-08-29",
+    "slot": "manha",
+    "topic": "Handicap Asiático",
+    "scheduled_at": "2026-08-29T10:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-29_tarde-cansaco-e-volume-de-partidas",
+    "date": "2026-08-29",
+    "slot": "tarde",
+    "topic": "Cansaço e volume de partidas no dia",
+    "scheduled_at": "2026-08-29T14:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-29_noite-meta-de-formacoes-muda-a-cad",
+    "date": "2026-08-29",
+    "slot": "noite",
+    "topic": "Meta de formações muda a cada versão",
+    "scheduled_at": "2026-08-29T20:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-30_manha-total-de-escanteios-ou-carto",
+    "date": "2026-08-30",
+    "slot": "manha",
+    "topic": "Total de Escanteios ou Cartões: como funcionam as linhas de over/under para esses mercados alternativos e em que contexto costumam ser observados.",
+    "scheduled_at": "2026-08-30T10:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-30_tarde-odds-de-abertura-vs-odds-ao",
+    "date": "2026-08-30",
+    "slot": "tarde",
+    "topic": "Odds de abertura vs odds ao vivo: o que a movimentação das odds entre o início e o decorrer da partida pode (e não pode) indicar.",
+    "scheduled_at": "2026-08-30T14:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  },
+  {
+    "folder": "2026-08-30_noite-cena-competitiva-de-efootbal",
+    "date": "2026-08-30",
+    "slot": "noite",
+    "topic": "Cena competitiva de eFootball/EA FC cresceu nos últimos anos: como torneios e visibilidade do competitivo evoluíram, sem citar valores de premiação.",
+    "scheduled_at": "2026-08-30T20:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null
+  }
+]
