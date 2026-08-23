@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARKTIP — Esoccer Betting Automation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+  :root {
+    --bg: #080808;
+    --card: #111118;
+    --card2: #0d0d14;
+    --red: #e84118;
+    --teal: #00c4bd;
+    --orange: #ff6428;
+    --yellow: #ffaa00;
+    --white: #ffffff;
+    --gray: #9696a8;
+    --border: #232330;
+    /* gradient string for reuse */
+    --grad: linear-gradient(90deg, #e84118, #00c4bd);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  section { padding: 80px 0; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle at 70% 30%, rgba(232,65,24,0.09) 0%, rgba(0,196,189,0.05) 50%, transparent 70%);
+    top: -150px;
+    right: -150px;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,196,189,0.08);
+    border: 1px solid rgba(0,196,189,0.25);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero-title {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-title span {
+    -webkit-text-stroke: 2px var(--red);
+    color: transparent;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 56px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    padding: 24px 40px 24px 0;
+    margin-right: 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--teal);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ─── CAROUSEL PREVIEW ─── */
+  .carousel-section { background: var(--card2); }
+
+  .carousel-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .carousel-phone {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .carousel-slides {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide-top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #e84118, #00c4bd);
+    margin: -28px -28px 20px -28px;
+    flex-shrink: 0;
+  }
+
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .slide-brand {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .slide-counter {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* Slide 1 — Cover */
+  .slide-cover {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-cover-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .slide-cover-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--teal);
+  }
+
+  .slide-arrow {
+    margin-top: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  /* Slide 2 — Content */
+  .slide-content-card {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+
+  .slide-headline {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .slide-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 14px;
+  }
+
+  .slide-body {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* Slide 3 — CTA */
+  .slide-cta-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .slide-cta-btn {
+    background: linear-gradient(90deg, #e84118, #00c4bd);
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 20px;
+    padding: 14px 40px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .slide-cta-text {
+    font-size: 15px;
+    color: var(--gray);
+  }
+
+  .slide-cta-handle {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* Carousel controls */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    background: var(--teal);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .carousel-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(0,196,189,0.05);
+  }
+
+  .carousel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .carousel-info h2 {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+  }
+
+  .carousel-info p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--gray);
+  }
+
+  .feature-item::before {
+    content: '→';
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ─── PILLARS ─── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .pillar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .pillar-card.green::before { background: linear-gradient(90deg, #e84118, #00c4bd); }
+  .pillar-card.yellow::before { background: var(--teal); }
+  .pillar-card.blue::before { background: var(--blue); }
+  .pillar-card.purple::before { background: var(--purple); }
+
+  .pillar-card.green:hover { border-color: rgba(0,196,189,0.3); }
+  .pillar-card.yellow:hover { border-color: rgba(255,100,40,0.3); }
+  .pillar-card.blue:hover { border-color: rgba(0,180,255,0.3); }
+  .pillar-card.purple:hover { border-color: rgba(185,111,255,0.3); }
+
+  .pillar-pct {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .pillar-card.green .pillar-pct { color: var(--teal); }
+  .pillar-card.yellow .pillar-pct { color: var(--orange); }
+  .pillar-card.blue .pillar-pct { color: var(--blue); }
+  .pillar-card.purple .pillar-pct { color: var(--purple); }
+
+  .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .pillar-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pillar-ex {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+    line-height: 1.4;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+  }
+
+  /* ─── SCHEDULE ─── */
+  .schedule-section { background: var(--card2); }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(7, 1fr);
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+  }
+
+  .schedule-col-header {
+    background: rgba(0,196,189,0.06);
+    border: 1px solid rgba(0,196,189,0.15);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .schedule-row-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .schedule-cell {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .schedule-cell:hover {
+    border-color: var(--teal);
+    background: rgba(0,196,189,0.04);
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 100px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .pill-green { background: rgba(0,196,189,0.15); color: var(--teal); }
+  .pill-yellow { background: rgba(255,100,40,0.15); color: var(--orange); }
+  .pill-blue { background: rgba(0,180,255,0.15); color: var(--blue); }
+  .pill-purple { background: rgba(185,111,255,0.15); color: var(--purple); }
+
+  .stories-cell {
+    background: rgba(185,111,255,0.05);
+    border: 1px dashed rgba(185,111,255,0.3);
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    font-size: 9px;
+    color: var(--purple);
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── HASHTAGS ─── */
+  .hashtag-section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .hashtag-group { display: flex; flex-direction: column; gap: 12px; }
+
+  .hashtag-group-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hashtag-group.green .hashtag-group-label { color: var(--teal); border-color: rgba(0,196,189,0.2); }
+  .hashtag-group.yellow .hashtag-group-label { color: var(--orange); border-color: rgba(255,100,40,0.2); }
+  .hashtag-group.blue .hashtag-group-label { color: var(--blue); border-color: rgba(0,180,255,0.2); }
+  .hashtag-group.purple .hashtag-group-label { color: var(--purple); border-color: rgba(185,111,255,0.2); }
+
+  .hashtag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .tag:hover { transform: translateY(-2px); }
+
+  .tag-green { border-color: rgba(0,196,189,0.25); color: var(--teal); background: rgba(0,196,189,0.05); }
+  .tag-green:hover { background: rgba(0,196,189,0.12); }
+  .tag-yellow { border-color: rgba(255,100,40,0.25); color: var(--orange); background: rgba(255,100,40,0.05); }
+  .tag-yellow:hover { background: rgba(255,100,40,0.12); }
+  .tag-blue { border-color: rgba(0,180,255,0.25); color: var(--blue); background: rgba(0,180,255,0.05); }
+  .tag-blue:hover { background: rgba(0,180,255,0.12); }
+  .tag-purple { border-color: rgba(185,111,255,0.25); color: var(--purple); background: rgba(185,111,255,0.05); }
+  .tag-purple:hover { background: rgba(185,111,255,0.12); }
+
+  /* ─── SAMPLE POST ─── */
+  .post-section { background: var(--card2); }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .ig-card {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 420px;
+  }
+
+  .ig-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+
+  .ig-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e84118, #00c4bd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .ig-username {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .ig-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+    margin-top: 1px;
+  }
+
+  .ig-image {
+    aspect-ratio: 1;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 3px solid var(--teal);
+    border-bottom: 1px solid #1e1e1e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ig-image-content {
+    text-align: center;
+    padding: 32px;
+  }
+
+  .ig-image-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .ig-image-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+  }
+
+  .ig-brand-watermark {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .ig-slide-num {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  .ig-actions {
+    display: flex;
+    gap: 16px;
+    padding: 12px 16px 8px;
+    font-size: 20px;
+  }
+
+  .ig-action { cursor: pointer; transition: transform 0.2s; }
+  .ig-action:hover { transform: scale(1.15); }
+
+  .ig-likes {
+    padding: 0 16px 6px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .ig-caption {
+    padding: 0 16px 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #d0d0d0;
+  }
+
+  .ig-caption strong { color: var(--white); }
+
+  .ig-hashtags {
+    padding: 0 16px 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: #4a9eff;
+    line-height: 1.8;
+  }
+
+  .ig-comments {
+    padding: 0 16px 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+  }
+
+  .post-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 20px;
+  }
+
+  .post-info h2 {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .metric-row {
+    display: flex;
+    gap: 24px;
+  }
+
+  .metric {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--teal);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ─── CLI ─── */
+  .terminal {
+    background: #080810;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .terminal-bar {
+    background: #111120;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .term-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .term-dot.red { background: #ff5f57; }
+  .term-dot.yellow { background: #febc2e; }
+  .term-dot.green { background: #28c840; }
+
+  .term-title {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  .terminal-body { padding: 28px 28px; display: flex; flex-direction: column; gap: 20px; }
+
+  .cmd-line { display: flex; flex-direction: column; gap: 4px; }
+
+  .cmd-prompt {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cmd-prompt .prompt-sym { color: var(--teal); }
+  .cmd-prompt .cmd-name { color: var(--white); font-weight: 700; }
+  .cmd-prompt .cmd-args { color: var(--orange); }
+
+  .cmd-desc {
+    font-size: 11px;
+    color: var(--gray);
+    padding-left: 20px;
+    line-height: 1.6;
+  }
+
+  .cmd-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist-section { background: var(--card2); }
+
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 700px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { background: rgba(255,255,255,0.02); }
+
+  .check-step {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+    color: var(--gray);
+  }
+
+  .check-item.done .check-step {
+    background: rgba(0,196,189,0.1);
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .check-item.warn .check-step {
+    background: rgba(255,100,40,0.08);
+    border-color: rgba(255,100,40,0.4);
+    color: var(--orange);
+  }
+
+  .check-body { flex: 1; }
+
+  .check-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .check-desc {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .check-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .badge-pending {
+    background: rgba(255,100,40,0.1);
+    color: var(--orange);
+    border: 1px solid rgba(255,100,40,0.25);
+    animation: badge-blink 2.5s ease-in-out infinite;
+  }
+
+  @keyframes badge-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .badge-done {
+    background: rgba(0,196,189,0.1);
+    color: var(--teal);
+    border: 1px solid rgba(0,196,189,0.25);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo span {
+    -webkit-text-stroke: 1px var(--red);
+    color: transparent;
+  }
+
+  .footer-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 2px;
+  }
+
+  /* ─── DIVIDER LINE ─── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .carousel-wrapper { grid-template-columns: 1fr; }
+    .post-grid { grid-template-columns: 1fr; }
+    .hashtag-section-inner { grid-template-columns: 1fr; }
+    .schedule-grid { grid-template-columns: 60px repeat(7, 1fr); font-size: 9px; }
+    .hero-stats { gap: 16px; }
+    .stat { padding: 16px 20px 16px 0; margin-right: 20px; }
+  }
+
+  @media (max-width: 600px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .schedule-grid { grid-template-columns: 48px repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="container">
+    <div class="hero-badge">⚽ SISTEMA ATIVO — ESOCCER BETTING</div>
+    <h1 class="hero-title">DARK<span>TIP</span></h1>
+    <p class="hero-tagline">Automação de conteúdo com IA para apostas em esoccer. Posts, carrosséis e roteiros gerados automaticamente para o Instagram.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">14</span><span class="stat-label">posts/semana</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">pilares de conteúdo</span></div>
+      <div class="stat"><span class="stat-num">IA</span><span class="stat-label">generativa</span></div>
+      <div class="stat"><span class="stat-num">API</span><span class="stat-label">Instagram Graph</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ CAROUSEL PREVIEW ═══════════════ -->
+<section class="carousel-section">
+  <div class="container">
+    <div class="carousel-wrapper">
+      <div class="carousel-phone">
+        <div class="carousel-slides" id="carousel">
+
+          <!-- Slide 1 -->
+          <div class="slide active" id="slide-0">
+            <div class="slide-top-bar"></div>
+            <div class="slide-header">
+              <span class="slide-brand">@darktip.bet</span>
+              <span class="slide-counter">1/3</span>
+            </div>
+            <div class="slide-cover">
+              <div class="slide-cover-title">TOP 5 MERCADOS DO ESOCCER</div>
+              <div class="slide-cover-sub">Quais rendem mais em 2025</div>
+            </div>
+            <div class="slide-arrow">→ Arraste para ver mais</div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slide" id="slide-1">
+            <div class="slide-top-bar"></div>
+            <div class="slide-header">
+              <span class="slide-brand">@darktip.bet</span>
+              <span class="slide-counter">2/3</span>
+            </div>
+            <div class="slide-content-card">
+              <div class="slide-num">1.</div>
+              <div class="slide-headline">Ambas Marcam</div>
+              <div class="slide-divider"></div>
+              <div class="slide-body">Mercado mais popular no esoccer. Ocorre em ~60% dos jogos. Odds médias de 1.80 — excelente para gestão de banca conservadora.</div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slide" id="slide-2">
+            <div class="slide-top-bar"></div>
+            <div class="slide-header">
+              <span class="slide-brand">@darktip.bet</span>
+              <span class="slide-counter">3/3</span>
+            </div>
+            <div class="slide-cta-inner">
+              <div class="slide-cta-btn">SIGA AGORA</div>
+              <div class="slide-cta-text">Estratégias diárias de esoccer no seu feed</div>
+              <div class="slide-cta-handle">@darktip.bet</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-dots">
+          <div class="dot active" onclick="goSlide(0)"></div>
+          <div class="dot" onclick="goSlide(1)"></div>
+          <div class="dot" onclick="goSlide(2)"></div>
+        </div>
+        <div class="carousel-nav">
+          <button class="nav-btn" onclick="prevSlide()">←</button>
+          <button class="nav-btn" onclick="nextSlide()">→</button>
+        </div>
+      </div>
+
+      <div class="carousel-info">
+        <div class="section-label">// CARROSSEL GERADO POR IA</div>
+        <h2>Roteiro + Imagens automáticos</h2>
+        <p>Um comando gera o roteiro completo, escreve a legenda, escolhe hashtags e renderiza os slides em 1080×1080 prontos para postar.</p>
+        <div class="feature-list">
+          <div class="feature-item">6 a 8 slides por carrossel</div>
+          <div class="feature-item">Tema dark com identidade visual consistente</div>
+          <div class="feature-item">Legenda + hashtags geradas junto</div>
+          <div class="feature-item">Salvo em <code style="color:var(--teal);font-size:13px">media/carousels/</code> pronto para upload</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ PILLARS ═══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">// PILARES DE CONTEÚDO</div>
+    <div class="section-title">Estratégia editorial</div>
+    <div class="pillars-grid">
+      <div class="pillar-card green">
+        <div class="pillar-pct">40%</div>
+        <div class="pillar-name">Estratégia & Tips</div>
+        <div class="pillar-examples">
+          <div class="pillar-ex">5 mercados que mais rendem no esoccer</div>
+          <div class="pillar-ex">Como usar Handicap Asiático no fifinha</div>
+          <div class="pillar-ex">Por que Ambas Marcam é o melhor mercado</div>
+        </div>
+      </div>
+      <div class="pillar-card yellow">
+        <div class="pillar-pct">25%</div>
+        <div class="pillar-name">Educação & Mindset</div>
+        <div class="pillar-examples">
+          <div class="pillar-ex">O que é EV+ e por que importa</div>
+          <div class="pillar-ex">Como montar sua banca do zero</div>
+          <div class="pillar-ex">Erros que 90% dos apostadores cometem</div>
+        </div>
+      </div>
+      <div class="pillar-card blue">
+        <div class="pillar-pct">20%</div>
+        <div class="pillar-name">Análise & Dados</div>
+        <div class="pillar-examples">
+          <div class="pillar-ex">As 3 ligas de esoccer mais previsíveis</div>
+          <div class="pillar-ex">Liga A x B — qual tem mais gols?</div>
+          <div class="pillar-ex">Análise semanal de resultados</div>
+        </div>
+      </div>
+      <div class="pillar-card purple">
+        <div class="pillar-pct">15%</div>
+        <div class="pillar-name">Comunidade</div>
+        <div class="pillar-examples">
+          <div class="pillar-ex">Qual seu mercado favorito?</div>
+          <div class="pillar-ex">Resultado da semana: +X apostas</div>
+          <div class="pillar-ex">Pergunta da semana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ SCHEDULE ═══════════════ -->
+<section class="schedule-section">
+  <div class="container">
+    <div class="section-label">// CALENDÁRIO SEMANAL</div>
+    <div class="section-title">14 posts por semana</div>
+    <div class="schedule-grid">
+      <div></div>
+      <div class="schedule-col-header">SEG</div>
+      <div class="schedule-col-header">TER</div>
+      <div class="schedule-col-header">QUA</div>
+      <div class="schedule-col-header">QUI</div>
+      <div class="schedule-col-header">SEX</div>
+      <div class="schedule-col-header">SÁB</div>
+      <div class="schedule-col-header">DOM</div>
+
+      <div class="schedule-row-label">09h</div>
+      <div class="schedule-cell"><span class="pill pill-green">carrossel</span></div>
+      <div class="schedule-cell"><span class="pill pill-yellow">educacional</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">estratégia</span></div>
+      <div class="schedule-cell"><span class="pill pill-blue">análise</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">carrossel</span></div>
+      <div class="schedule-cell"><span class="pill pill-yellow">mindset</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">estratégia</span></div>
+
+      <div class="schedule-row-label">19h</div>
+      <div class="schedule-cell"><span class="pill pill-blue">análise</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">carrossel</span></div>
+      <div class="schedule-cell"><span class="pill pill-purple">comunidade</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">estratégia</span></div>
+      <div class="schedule-cell"><span class="pill pill-blue">análise</span></div>
+      <div class="schedule-cell"><span class="pill pill-green">carrossel</span></div>
+      <div class="schedule-cell"><span class="pill pill-purple">engajamento</span></div>
+
+      <div class="schedule-row-label" style="color:var(--purple)">stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+      <div class="stories-cell">5 stories</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ HASHTAGS ═══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">// SETS DE HASHTAGS</div>
+    <div class="section-title">Alcance orgânico</div>
+    <div class="hashtag-section-inner">
+      <div class="hashtag-group green">
+        <div class="hashtag-group-label">Principal</div>
+        <div class="hashtag-cloud">
+          <span class="tag tag-green">#esoccer</span>
+          <span class="tag tag-green">#fifinha</span>
+          <span class="tag tag-green">#apostasesportivas</span>
+          <span class="tag tag-green">#apostas</span>
+          <span class="tag tag-green">#eafcbet</span>
+          <span class="tag tag-green">#apostadorsmart</span>
+          <span class="tag tag-green">#valuebetting</span>
+          <span class="tag tag-green">#apostasonline</span>
+        </div>
+      </div>
+      <div class="hashtag-group yellow">
+        <div class="hashtag-group-label">Estratégia</div>
+        <div class="hashtag-cloud">
+          <span class="tag tag-yellow">#gestaodbanca</span>
+          <span class="tag tag-yellow">#valuebets</span>
+          <span class="tag tag-yellow">#evpositivo</span>
+          <span class="tag tag-yellow">#handicap</span>
+          <span class="tag tag-yellow">#ambasmarcam</span>
+          <span class="tag tag-yellow">#overunder</span>
+          <span class="tag tag-yellow">#oddsfair</span>
+        </div>
+      </div>
+      <div class="hashtag-group blue">
+        <div class="hashtag-group-label">Educacional</div>
+        <div class="hashtag-cloud">
+          <span class="tag tag-blue">#aprendaapostar</span>
+          <span class="tag tag-blue">#comoganharnaaposta</span>
+          <span class="tag tag-blue">#jogoresponsavel</span>
+          <span class="tag tag-blue">#entendaasodd</span>
+          <span class="tag tag-blue">#dicasdaposta</span>
+          <span class="tag tag-blue">#apostasparainicinates</span>
+        </div>
+      </div>
+      <div class="hashtag-group purple">
+        <div class="hashtag-group-label">eSoccer específico</div>
+        <div class="hashtag-cloud">
+          <span class="tag tag-purple">#esoccerbetting</span>
+          <span class="tag tag-purple">#fifavirtual</span>
+          <span class="tag tag-purple">#eafcvirtual</span>
+          <span class="tag tag-purple">#futebolevirtual</span>
+          <span class="tag tag-purple">#esportesvirtuais</span>
+          <span class="tag tag-purple">#esports</span>
+          <span class="tag tag-purple">#gamesbetting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ SAMPLE POST ═══════════════ -->
+<section class="post-section">
+  <div class="container">
+    <div class="post-grid">
+      <div class="ig-card">
+        <div class="ig-header">
+          <div class="ig-avatar">D</div>
+          <div>
+            <div class="ig-username">@darktip.bet</div>
+            <div class="ig-subtitle">⚽ Esoccer Betting · Estratégias</div>
+          </div>
+        </div>
+        <div class="ig-image">
+          <div style="position:absolute;top:10px;left:14px;font-family:'Space Mono',monospace;font-size:11px;color:var(--teal);font-weight:700;">@darktip.bet</div>
+          <div style="position:absolute;top:10px;right:14px;font-family:'Space Mono',monospace;font-size:11px;color:var(--gray);">1/6</div>
+          <div class="ig-image-content">
+            <div class="ig-image-title">GESTÃO DE BANCA:<br>O SEGREDO DOS PROs</div>
+            <div class="ig-image-sub">Quem não controla a banca, perde sempre</div>
+          </div>
+        </div>
+        <div class="ig-actions">
+          <span class="ig-action">🤍</span>
+          <span class="ig-action">💬</span>
+          <span class="ig-action">✈️</span>
+        </div>
+        <div class="ig-likes">1.247 curtidas</div>
+        <div class="ig-caption">
+          <strong>@darktip.bet</strong> Você aposta todo dia e ainda não entende por que o saldo só cai? 🤔<br><br>
+          A maioria dos apostadores perde não por falta de estratégia — mas por <strong>falta de gestão de banca</strong>.<br><br>
+          Arraste e descubra o método que os apostadores profissionais usam no esoccer 👉
+        </div>
+        <div class="ig-hashtags">#esoccer #gestaodbanca #apostasesportivas #fifinha #valuebetting #apostadorsmart #ambasmarcam #esoccerbetting</div>
+        <div class="ig-comments">Ver todos os 89 comentários</div>
+      </div>
+
+      <div class="post-info">
+        <div class="section-label">// POST GERADO POR IA</div>
+        <h2>Legenda, hook e hashtags em 1 comando</h2>
+        <p style="color:var(--gray);line-height:1.7;font-size:15px">
+          A IA analisa o pilar, o horário e o formato — e escreve o post completo com hook testado para parar o scroll, CTA claro e sets de hashtags otimizados.
+        </p>
+        <div class="metric-row">
+          <div class="metric">
+            <span class="metric-val">2.200</span>
+            <span class="metric-lbl">chars máx</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">30</span>
+            <span class="metric-lbl">hashtags</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">~8s</span>
+            <span class="metric-lbl">geração</span>
+          </div>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item">Hook otimizado para parar o scroll</div>
+          <div class="feature-item">Tom de especialista — confiante e responsável</div>
+          <div class="feature-item">CTA claro no final de cada post</div>
+          <div class="feature-item">Horário ideal sugerido pela IA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ CLI ═══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">// COMANDOS</div>
+    <div class="section-title">Interface de linha de comando</div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="term-dot red"></div>
+        <div class="term-dot yellow"></div>
+        <div class="term-dot green"></div>
+        <div class="term-title">@darktip.bet — python main.py</div>
+      </div>
+      <div class="terminal-body">
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">plan</span>
+          </div>
+          <div class="cmd-desc">Gera o plano semanal completo (14 posts) com temas, formatos e horários. Salvo em posts/weekly_plan.json</div>
+        </div>
+        <div class="cmd-divider"></div>
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">generate --type estrategia</span>
+          </div>
+          <div class="cmd-desc">Gera 1 post completo (legenda + hashtags + CTA). Tipos: estrategia, educacional, analise, motivacional, noticias</div>
+        </div>
+        <div class="cmd-divider"></div>
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">carousel "gestão de banca no esoccer"</span>
+          </div>
+          <div class="cmd-desc">Gera roteiro + imagens 1080×1080 do carrossel em media/carousels/. Pronto para upload direto no Instagram</div>
+        </div>
+        <div class="cmd-divider"></div>
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">queue</span>
+          </div>
+          <div class="cmd-desc">Lista todos os posts na fila aguardando publicação, com tipo, tópico e horário agendado</div>
+        </div>
+        <div class="cmd-divider"></div>
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">publish posts/queue/post_xxx.json &lt;image_url&gt;</span>
+          </div>
+          <div class="cmd-desc">Publica um post no Instagram via Graph API. Move para posts/published/ após confirmar o media_id</div>
+        </div>
+        <div class="cmd-divider"></div>
+        <div class="cmd-line">
+          <div class="cmd-prompt">
+            <span class="prompt-sym">$</span>
+            <span class="cmd-name">python main.py</span>
+            <span class="cmd-args">status</span>
+          </div>
+          <div class="cmd-desc">Exibe info da conta Instagram (seguidores, posts, bio) e resumo da fila atual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+<section class="checklist-section">
+  <div class="container">
+    <div class="section-label">// SETUP</div>
+    <div class="section-title">Próximos passos para ativar</div>
+    <div class="checklist">
+      <div class="check-item warn">
+        <div class="check-step">1</div>
+        <div class="check-body">
+          <div class="check-title">Criar Facebook Page</div>
+          <div class="check-desc">facebook.com/pages/create → vincular ao Instagram → converter para conta Profissional</div>
+        </div>
+        <div class="check-badge badge-pending">PENDENTE</div>
+      </div>
+      <div class="check-item">
+        <div class="check-step">2</div>
+        <div class="check-body">
+          <div class="check-title">Meta Developer App</div>
+          <div class="check-desc">developers.facebook.com → Criar App Business → Instagram Graph API → gerar Page Access Token</div>
+        </div>
+        <div class="check-badge badge-pending">PENDENTE</div>
+      </div>
+      <div class="check-item">
+        <div class="check-step">3</div>
+        <div class="check-body">
+          <div class="check-title">ANTHROPIC_API_KEY</div>
+          <div class="check-desc">console.anthropic.com → API Keys → adicionar no .env para ativar a geração de conteúdo com IA</div>
+        </div>
+        <div class="check-badge badge-pending">PENDENTE</div>
+      </div>
+      <div class="check-item">
+        <div class="check-step">4</div>
+        <div class="check-body">
+          <div class="check-title">Configurar o .env</div>
+          <div class="check-desc">Preencher META_ACCESS_TOKEN + INSTAGRAM_BUSINESS_ACCOUNT_ID + ANTHROPIC_API_KEY no arquivo .env</div>
+        </div>
+        <div class="check-badge badge-pending">PENDENTE</div>
+      </div>
+      <div class="check-item done">
+        <div class="check-step">✓</div>
+        <div class="check-body">
+          <div class="check-title">Projeto criado & dependências instaladas</div>
+          <div class="check-desc">Estrutura completa em /Users/santori/darkdale — venv criado, Pillow + Anthropic SDK instalados</div>
+        </div>
+        <div class="check-badge badge-done">COMPLETO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">DARK<span>TIP</span></div>
+    <div class="footer-sub">⚽ @DARKTIP.BET · ESOCCER BETTING · POWERED BY CLAUDE AI</div>
+  </div>
+</footer>
+
+<script>
+  let current = 0;
+  const total = 3;
+
+  function goSlide(n) {
+    document.getElementById('slide-' + current).classList.remove('active');
+    document.querySelectorAll('.dot')[current].classList.remove('active');
+    current = n;
+    document.getElementById('slide-' + current).classList.add('active');
+    document.querySelectorAll('.dot')[current].classList.add('active');
+  }
+
+  function nextSlide() { goSlide((current + 1) % total); }
+  function prevSlide() { goSlide((current - 1 + total) % total); }
+
+  // Auto-advance
+  setInterval(nextSlide, 3500);
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // Staggered entrance
+  document.querySelectorAll('.pillar-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = `opacity 0.5s ${i * 0.1}s, transform 0.5s ${i * 0.1}s`;
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pillar-card, .check-item, .metric').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "pillars": [
+    {
+      "id": "estrategia",
+      "name": "Estratégia & Tips",
+      "description": "Dicas práticas, mercados, análises de odds",
+      "frequency": "40%",
+      "formats": ["carrossel", "imagem", "reels"],
+      "examples": [
+        "5 mercados que mais rendem no esoccer",
+        "Como usar Handicap Asiático no fifinha",
+        "Por que Ambas Marcam é o melhor mercado para iniciantes"
+      ]
+    },
+    {
+      "id": "educacional",
+      "name": "Educação & Mindset",
+      "description": "Conceitos, gestão de banca, psicologia",
+      "frequency": "25%",
+      "formats": ["carrossel", "imagem"],
+      "examples": [
+        "O que é EV+ e por que importa",
+        "Como montar sua banca do zero",
+        "Erros que 90% dos apostadores cometem"
+      ]
+    },
+    {
+      "id": "analise",
+      "name": "Análise & Dados",
+      "description": "Análise de ligas, estatísticas, tendências",
+      "frequency": "20%",
+      "formats": ["imagem", "carrossel"],
+      "examples": [
+        "Liga A x Liga B - qual tem mais gols?",
+        "As 3 ligas de esoccer mais previsíveis",
+        "Análise semanal de resultados"
+      ]
+    },
+    {
+      "id": "comunidade",
+      "name": "Comunidade & Engajamento",
+      "description": "Interação, perguntas, enquetes",
+      "frequency": "15%",
+      "formats": ["stories", "imagem"],
+      "examples": [
+        "Qual seu mercado favorito?",
+        "Resultado da semana: ganhei X apostas",
+        "Pergunta da semana sobre estratégia"
+      ]
+    }
+  ],
+  "best_post_times": {
+    "weekday": ["09:00", "12:30", "19:00", "21:00"],
+    "weekend": ["10:00", "14:00", "20:00"]
+  },
+  "post_frequency": {
+    "feed": 2,
+    "stories": 5,
+    "reels": 3
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__cd91db6a-0777-4843-bb72-fd080cd072a6__get_connectors",
+      "mcp__cd91db6a-0777-4843-bb72-fd080cd072a6__list_actions"
+    ]
+  }
+}
