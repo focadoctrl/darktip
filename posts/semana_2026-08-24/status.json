@@ -7,7 +7,8 @@
     "scheduled_at": "2026-08-24T09:00:00-03:00",
     "status": "posted",
     "media_id": "17974314479919256",
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-24_tarde-forma-recente-ultimos-5-a-10",
@@ -17,7 +18,8 @@
     "scheduled_at": "2026-08-24T12:30:00-03:00",
     "status": "posted",
     "media_id": "17915530434442596",
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-24_noite-fifa-virou-ea-sports-fc-em-2",
@@ -27,7 +29,8 @@
     "scheduled_at": "2026-08-24T19:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-25_manha-under-over-de-gols",
@@ -37,7 +40,8 @@
     "scheduled_at": "2026-08-25T09:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-25_tarde-posse-de-bola",
@@ -47,7 +51,8 @@
     "scheduled_at": "2026-08-25T12:30:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-25_noite-efootball-e-o-antigo-pes",
@@ -57,7 +62,8 @@
     "scheduled_at": "2026-08-25T19:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-26_manha-ambas-marcam-btts-explicacao",
@@ -67,7 +73,8 @@
     "scheduled_at": "2026-08-26T09:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-26_tarde-finalizacoes-no-gol-vs-final",
@@ -77,7 +84,8 @@
     "scheduled_at": "2026-08-26T12:30:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-26_noite-diferenca-entre-efootball-e",
@@ -87,7 +95,8 @@
     "scheduled_at": "2026-08-26T19:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-27_manha-dupla-chance-1x-12-x2",
@@ -97,7 +106,8 @@
     "scheduled_at": "2026-08-27T09:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-27_tarde-escanteios-como-indicador-de",
@@ -107,7 +117,8 @@
     "scheduled_at": "2026-08-27T12:30:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-27_noite-configuracoes-de-partida-tem",
@@ -117,7 +128,8 @@
     "scheduled_at": "2026-08-27T19:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-28_manha-draw-no-bet-o-mercado-onde-o",
@@ -127,7 +139,8 @@
     "scheduled_at": "2026-08-28T09:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-28_tarde-confronto-direto-entre-playe",
@@ -137,7 +150,8 @@
     "scheduled_at": "2026-08-28T12:30:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-28_noite-rating-alto-do-elenco-nao-ga",
@@ -147,7 +161,8 @@
     "scheduled_at": "2026-08-28T19:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-29_manha-handicap-asiatico",
@@ -157,7 +172,8 @@
     "scheduled_at": "2026-08-29T10:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-29_tarde-cansaco-e-volume-de-partidas",
@@ -167,7 +183,8 @@
     "scheduled_at": "2026-08-29T14:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-29_noite-meta-de-formacoes-muda-a-cad",
@@ -177,7 +194,8 @@
     "scheduled_at": "2026-08-29T20:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   },
   {
     "folder": "2026-08-30_manha-total-de-escanteios-ou-carto",
@@ -187,7 +205,8 @@
     "scheduled_at": "2026-08-30T10:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "mercados"
   },
   {
     "folder": "2026-08-30_tarde-odds-de-abertura-vs-odds-ao",
@@ -197,7 +216,8 @@
     "scheduled_at": "2026-08-30T14:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "estatisticas"
   },
   {
     "folder": "2026-08-30_noite-cena-competitiva-de-efootbal",
@@ -207,6 +227,7 @@
     "scheduled_at": "2026-08-30T20:00:00-03:00",
     "status": "scheduled",
     "media_id": null,
-    "task_id": null
+    "task_id": null,
+    "pillar": "curiosidades"
   }
 ]
