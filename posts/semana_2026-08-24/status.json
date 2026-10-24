@@ -181,8 +181,8 @@
     "slot": "tarde",
     "topic": "Cansaço e volume de partidas no dia",
     "scheduled_at": "2026-08-29T14:00:00-03:00",
-    "status": "scheduled",
-    "media_id": null,
+    "status": "posted",
+    "media_id": "17955036963281404",
     "task_id": null,
     "pillar": "estatisticas"
   },
