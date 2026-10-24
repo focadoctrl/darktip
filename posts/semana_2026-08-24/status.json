@@ -104,8 +104,8 @@
     "slot": "manha",
     "topic": "Dupla Chance (1X, 12, X2)",
     "scheduled_at": "2026-08-27T09:00:00-03:00",
-    "status": "scheduled",
-    "media_id": null,
+    "status": "posted",
+    "media_id": "18238400245316567",
     "task_id": null,
     "pillar": "mercados"
   },
