@@ -1,0 +1,233 @@
+[
+  {
+    "folder": "2026-10-26_manha-handicap-europeu",
+    "date": "2026-10-26",
+    "slot": "manha",
+    "topic": "Handicap Europeu",
+    "scheduled_at": "2026-10-26T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-26_tarde-probabilidade-implicita-conv",
+    "date": "2026-10-26",
+    "slot": "tarde",
+    "topic": "Probabilidade implícita: convertendo odds em porcentagem",
+    "scheduled_at": "2026-10-26T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-26_noite-esoccer-ganhou-forca-em-2020",
+    "date": "2026-10-26",
+    "slot": "noite",
+    "topic": "Esoccer ganhou força em 2020 quando o futebol parou",
+    "scheduled_at": "2026-10-26T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-10-27_manha-par-ou-impar-odd-even-de-gol",
+    "date": "2026-10-27",
+    "slot": "manha",
+    "topic": "Par ou Ímpar (Odd/Even) de gols",
+    "scheduled_at": "2026-10-27T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-27_tarde-tamanho-da-amostra-poucos-jo",
+    "date": "2026-10-27",
+    "slot": "tarde",
+    "topic": "Tamanho da amostra: poucos jogos não dizem muito",
+    "scheduled_at": "2026-10-27T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-27_noite-partidas-de-esoccer-duram-po",
+    "date": "2026-10-27",
+    "slot": "noite",
+    "topic": "Partidas de esoccer duram poucos minutos de tempo real",
+    "scheduled_at": "2026-10-27T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-10-28_manha-resultado-exato-correct-scor",
+    "date": "2026-10-28",
+    "slot": "manha",
+    "topic": "Resultado Exato (Correct Score)",
+    "scheduled_at": "2026-10-28T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-28_tarde-media-vs-mediana-um-placar-e",
+    "date": "2026-10-28",
+    "slot": "tarde",
+    "topic": "Média vs mediana: um placar extremo distorce a média",
+    "scheduled_at": "2026-10-28T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-28_noite-o-primeiro-fifa-saiu-em-1993",
+    "date": "2026-10-28",
+    "slot": "noite",
+    "topic": "O primeiro FIFA saiu em 1993",
+    "scheduled_at": "2026-10-28T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-10-29_manha-intervalo-final-ht-ft",
+    "date": "2026-10-29",
+    "slot": "manha",
+    "topic": "Intervalo/Final (HT/FT)",
+    "scheduled_at": "2026-10-29T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-29_tarde-gols-no-1o-tempo-vs-2o-tempo",
+    "date": "2026-10-29",
+    "slot": "tarde",
+    "topic": "Gols no 1º tempo vs 2º tempo",
+    "scheduled_at": "2026-10-29T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-29_noite-pes-nasceu-no-japao-como-win",
+    "date": "2026-10-29",
+    "slot": "noite",
+    "topic": "PES nasceu no Japão como Winning Eleven",
+    "scheduled_at": "2026-10-29T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-10-30_manha-margem-da-casa-overround",
+    "date": "2026-10-30",
+    "slot": "manha",
+    "topic": "Margem da casa (overround)",
+    "scheduled_at": "2026-10-30T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-30_tarde-taxa-de-jogos-sem-sofrer-gol",
+    "date": "2026-10-30",
+    "slot": "tarde",
+    "topic": "Taxa de jogos sem sofrer gols",
+    "scheduled_at": "2026-10-30T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-30_noite-mundial-de-games-de-futebol",
+    "date": "2026-10-30",
+    "slot": "noite",
+    "topic": "Mundial de games de futebol existe desde 2004",
+    "scheduled_at": "2026-10-30T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-10-31_manha-proximo-gol-next-goal",
+    "date": "2026-10-31",
+    "slot": "manha",
+    "topic": "Próximo Gol (Next Goal)",
+    "scheduled_at": "2026-10-31T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-10-31_tarde-variancia-sequencias-acontec",
+    "date": "2026-10-31",
+    "slot": "tarde",
+    "topic": "Variância: sequências acontecem mesmo com boa análise",
+    "scheduled_at": "2026-10-31T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-10-31_noite-placares-altos-sao-comuns-no",
+    "date": "2026-10-31",
+    "slot": "noite",
+    "topic": "Placares altos são comuns no esoccer",
+    "scheduled_at": "2026-10-31T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  },
+  {
+    "folder": "2026-11-01_manha-gols-por-time-team-total",
+    "date": "2026-11-01",
+    "slot": "manha",
+    "topic": "Gols por time (Team Total)",
+    "scheduled_at": "2026-11-01T09:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "mercados"
+  },
+  {
+    "folder": "2026-11-01_tarde-o-time-escolhido-pelo-player",
+    "date": "2026-11-01",
+    "slot": "tarde",
+    "topic": "O time escolhido pelo player muda a leitura",
+    "scheduled_at": "2026-11-01T12:30:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "estatisticas"
+  },
+  {
+    "folder": "2026-11-01_noite-ligas-de-esoccer-rodam-prati",
+    "date": "2026-11-01",
+    "slot": "noite",
+    "topic": "Ligas de esoccer rodam praticamente o dia todo",
+    "scheduled_at": "2026-11-01T19:00:00-03:00",
+    "status": "scheduled",
+    "media_id": null,
+    "task_id": null,
+    "pillar": "curiosidades"
+  }
+]
