@@ -1,0 +1,170 @@
+[
+  {
+    "date": "2026-10-26",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Handicap Europeu",
+    "folder": "2026-10-26_manha-handicap-europeu",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-26",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Probabilidade implícita: convertendo odds em porcentagem",
+    "folder": "2026-10-26_tarde-probabilidade-implicita-conv",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-26",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Esoccer ganhou força em 2020 quando o futebol parou",
+    "folder": "2026-10-26_noite-esoccer-ganhou-forca-em-2020",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-27",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Par ou Ímpar (Odd/Even) de gols",
+    "folder": "2026-10-27_manha-par-ou-impar-odd-even-de-gol",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-27",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Tamanho da amostra: poucos jogos não dizem muito",
+    "folder": "2026-10-27_tarde-tamanho-da-amostra-poucos-jo",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-27",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Partidas de esoccer duram poucos minutos de tempo real",
+    "folder": "2026-10-27_noite-partidas-de-esoccer-duram-po",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-28",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Resultado Exato (Correct Score)",
+    "folder": "2026-10-28_manha-resultado-exato-correct-scor",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-28",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Média vs mediana: um placar extremo distorce a média",
+    "folder": "2026-10-28_tarde-media-vs-mediana-um-placar-e",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-28",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "O primeiro FIFA saiu em 1993",
+    "folder": "2026-10-28_noite-o-primeiro-fifa-saiu-em-1993",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-29",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Intervalo/Final (HT/FT)",
+    "folder": "2026-10-29_manha-intervalo-final-ht-ft",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-29",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Gols no 1º tempo vs 2º tempo",
+    "folder": "2026-10-29_tarde-gols-no-1o-tempo-vs-2o-tempo",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-29",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "PES nasceu no Japão como Winning Eleven",
+    "folder": "2026-10-29_noite-pes-nasceu-no-japao-como-win",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-30",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Margem da casa (overround)",
+    "folder": "2026-10-30_manha-margem-da-casa-overround",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-30",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Taxa de jogos sem sofrer gols",
+    "folder": "2026-10-30_tarde-taxa-de-jogos-sem-sofrer-gol",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-30",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Mundial de games de futebol existe desde 2004",
+    "folder": "2026-10-30_noite-mundial-de-games-de-futebol",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-31",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Próximo Gol (Next Goal)",
+    "folder": "2026-10-31_manha-proximo-gol-next-goal",
+    "n_images": 8
+  },
+  {
+    "date": "2026-10-31",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "Variância: sequências acontecem mesmo com boa análise",
+    "folder": "2026-10-31_tarde-variancia-sequencias-acontec",
+    "n_images": 1
+  },
+  {
+    "date": "2026-10-31",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Placares altos são comuns no esoccer",
+    "folder": "2026-10-31_noite-placares-altos-sao-comuns-no",
+    "n_images": 1
+  },
+  {
+    "date": "2026-11-01",
+    "slot": "manha",
+    "pillar": "mercados",
+    "topic": "Gols por time (Team Total)",
+    "folder": "2026-11-01_manha-gols-por-time-team-total",
+    "n_images": 8
+  },
+  {
+    "date": "2026-11-01",
+    "slot": "tarde",
+    "pillar": "estatisticas",
+    "topic": "O time escolhido pelo player muda a leitura",
+    "folder": "2026-11-01_tarde-o-time-escolhido-pelo-player",
+    "n_images": 1
+  },
+  {
+    "date": "2026-11-01",
+    "slot": "noite",
+    "pillar": "curiosidades",
+    "topic": "Ligas de esoccer rodam praticamente o dia todo",
+    "folder": "2026-11-01_noite-ligas-de-esoccer-rodam-prati",
+    "n_images": 1
+  }
+]
