@@ -214,8 +214,8 @@
     "slot": "tarde",
     "topic": "Odds de abertura vs odds ao vivo: o que a movimentação das odds entre o início e o decorrer da partida pode (e não pode) indicar.",
     "scheduled_at": "2026-08-30T14:00:00-03:00",
-    "status": "scheduled",
-    "media_id": null,
+    "status": "posted",
+    "media_id": "17920950756240907",
     "task_id": null,
     "pillar": "estatisticas"
   },
