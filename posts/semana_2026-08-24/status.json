@@ -137,8 +137,8 @@
     "slot": "manha",
     "topic": "Draw No Bet: o mercado onde o empate anula a aposta (dinheiro de volta), diferença prática em relação ao Match Odds e quando costuma ser usado.",
     "scheduled_at": "2026-08-28T09:00:00-03:00",
-    "status": "scheduled",
-    "media_id": null,
+    "status": "posted",
+    "media_id": "18065650130630503",
     "task_id": null,
     "pillar": "mercados"
   },
